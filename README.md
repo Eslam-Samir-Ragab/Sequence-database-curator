@@ -20,10 +20,10 @@ Two files (%gene_curated_seq_only.fasta and %gene_final.fasta) contain only the 
    2b- optimum length approach: gives only your gene provided you feed the approximate length of your protein.
 
 # How to use:
-1-	you need to install python 2.7 (https://www.python.org/downloads/) on your machine.
+1-	you need to install python 2.7 (https://www.python.org/downloads/) on your machine (note: python 3.x will have some incompatbility which we can resolve).
 2-	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
 3-	Open the file “database_curator.py” with (python.exe).
 4-	State your variables and press Enter.
 
 
-# Any Errors please let me know via my e-mail: eslam.ebrahim@pharma.cu.edu.eg
+# Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
