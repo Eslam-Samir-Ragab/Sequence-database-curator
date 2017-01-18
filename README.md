@@ -24,3 +24,6 @@ Two files (%gene_curated_seq_only.fasta and %gene_final.fasta) contain only the 
 2-	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
 3-	Open the file “database_curator.py” with (python.exe).
 4-	State your variables and press Enter.
+
+
+# Any Errors please let me know via my e-mail: eslam.ebrahim@pharma.cu.edu.eg
