@@ -22,13 +22,13 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
 ## How to use (Python 2.7 or later):
 1.	you need to install [python 2.7](https://www.python.org/downloads/) on your machine.
 2.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
-3.	Open the file “database_curator.2.py” with (python.exe).
+3.	Open the file “**database_curator.2.py**” with (python.exe).
 4.	State your variables and press Enter.
 
 ## How to use (Python 3):
 1.	you need to install [python 3](https://www.python.org/downloads/) on your machine.
 2.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
-3.	Open the file “database_curator.3.py” with (python.exe).
+3.	Open the file “**database_curator.3.py**” with (python.exe).
 4.	State your variables and press Enter.
 
 
