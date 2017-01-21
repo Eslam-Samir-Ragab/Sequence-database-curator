@@ -38,4 +38,4 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
 4.	State your variables and press Enter.
 
 
-# Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
+### Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
