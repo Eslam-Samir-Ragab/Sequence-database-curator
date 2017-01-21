@@ -9,9 +9,10 @@ File containing all the different downloaded sequences in FASTA format.
 2- It removes the partial sequences that are exact part from other sequences in your database.
 
 # Output:
-Two files (%gene_curated_seq_only.fasta and %gene_final.fasta) contain only the unique and more complete sequences in your input file depending on your approach.
+Three files (%gene_curated_seq_only.fasta, %gene_final.fasta and %gene_deleted.fasta) contain only the unique and more complete sequences in your input file depending on your approach.
 %gene_curated_seq_only.fasta : contains sequences without their annotations.
-%gene_final.fasta : contains sequences with the exact annotation in your database
+%gene_final.fasta : contains sequences with the exact annotation in your database.
+%gene_deleted.fasta : contains the names of the deleted seqeunces.
 
 # Options:
 1- Working on either Protein (P) or Nucleotide (N) databases.
