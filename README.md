@@ -1,4 +1,4 @@
-# database_curator
+# Sequence database curator
 This program can curate nucleotide and/or protein databases from redundant and partial redundant sequences for a specific gene and /or any groups of genes.
 
 ## Input:
