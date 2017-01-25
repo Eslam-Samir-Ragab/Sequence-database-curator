@@ -2,7 +2,9 @@
 This program can curate nucleotide and/or protein databases from redundant and partial redundant sequences for a specific gene and /or any groups of genes.
 
 ## Input:
-File containing all the different downloaded sequences in FASTA format.
+- File containing all the different downloaded sequences in FASTA format.
+- OR
+- A directory containing all your desired files in the same extension
 
 ## Processing:
 1. It removes the redundant sequences.
