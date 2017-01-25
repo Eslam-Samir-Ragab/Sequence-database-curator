@@ -18,7 +18,7 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
 2. Two approaches (**largest possible length** and **optimum length**).
   * largest possible length approach: gives the longest sequence even if it exceeds the length of your gene.
   * optimum length approach: gives only your gene provided you feed the approximate length of your protein.
-![Illustration of both approaches.](https://drive.google.com/file/d/0B752ugm5kNQcTGJGd203blk5UTQ/view?usp=sharing)
+![Illustration of both approaches.](https://drive.google.com/file/d/0B752ugm5kNQcTGJGd203blk5UTQ/view)
 
 ## How to use (Python 2.7 or later):
 1.	you need to install [python 2.7](https://www.python.org/downloads/) on your machine.
