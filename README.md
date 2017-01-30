@@ -1,5 +1,6 @@
 # Sequence database curator
 This program can curate nucleotide and/or protein databases from redundant and partial redundant sequences for a specific gene and /or any groups of genes.
+![Summary of the program.](https://ppjpkw-ch3302.files.1drv.com/y3pdwEcVS3Zzm79n26oygTt4nJ1R-52Ziqvxpr29UPFhd72AERdJvinl95KnTvT5WZ8m9iScsinX0cLTyyMdly24jYX1sebuuEzzFuGpTlkxGwbtpwlU_LHZDJrVT3gHSV6ub79tHDQXg-d_tNT1GVWwqVbZ67YP-QDCosfs2zBuUo/Database%20curator.png?psid=1)
 
 ## Input:
 - File containing all the different downloaded sequences in FASTA format.
