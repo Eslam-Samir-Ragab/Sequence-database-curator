@@ -120,7 +120,13 @@ def remove_redudncy(totalseqs,totalnames,filename,filename2):          #remove r
     print ('deleted sequences =',(len(totalseqs)-len(result)))
     f.close()
 database = str(input("Protein or Nucleotide Database? P/N : "))                  #begining of the code !!!
+if database.upper() != 'P' and database.upper() != 'N':
+    import sys
+    sys.exit("\n\nPlease specify your type of database !\n")
 path = str(input("Enter original FASTA file's path : "))
+if path == '' or path == ' ':
+    import sys
+    sys.exit("\n\nThere is no directory in this path !\n")
 gene = str(input("Enter gene's name : "))
 intermediate_file='%s_curated_seq_only.fasta' %gene
 final_file='%s_final.fasta' %gene
@@ -128,10 +134,19 @@ deleted_file='%s_deleted.fasta' %gene
 import os
 os.chdir(path)
 multiples=str(input("Your data is in one file Y/N : "))
+if multiples.upper() != 'Y' and multiples.upper() != 'N':
+    import sys
+    sys.exit("\n\nPlease specify your data either in one file or not !\n")
 if multiples.upper()=='N':
-    ext=str(input("Enter your files' extention (fasta, fas, txt, ...) : "))
+    ext=str(input("Enter your files' extension (fasta, fas, txt, ...) : "))
+    if '.' in ext:
+        import sys
+        sys.exit("\n\nPlease write the extension only without '.' !\n")
     import glob
     files = glob.glob('*.%s'%ext)
+    if len(files) == 0:
+        import sys
+        sys.exit("\n\nYour files' extension and / or your path is incorrect !\n")
     with open('%s.%s'%(gene,ext),'w') as result:
         for _ in files:
             for line in open(_,'r'):
@@ -139,6 +154,9 @@ if multiples.upper()=='N':
     file_name='%s.fasta' %gene
 else:
     file_name = str(input("Enter original FASTA file's name : "))
+    if os.path.isfile(file_name) == False:
+        import sys
+        sys.exit("\n\nYour file's name and / or your path is incorrect !\n")
 import time                                                   #in case if we want the time
 start_time = time.clock()
 totalseqs=reading_FASTA_sequences(file_name)
@@ -154,11 +172,10 @@ if database.upper() == 'N':
         medium3_time=time.clock()                                        #in case if we want the time
         remove_redudncy_N(totalseqs,totalnames,intermediate_file,deleted_file)
     else:
-        print ("Please specify your approach")
+        import sys
+        sys.exit("\n\nPlease specify your approach !\n")
 elif database.upper() == 'P':
     remove_redudncy(totalseqs,totalnames,intermediate_file,deleted_file)
-else:
-    print ("Please specify your type of database")
 curatednames=[]
 curatedseqs=reading_FASTA_sequences(intermediate_file)
 f=open(final_file,'w')
