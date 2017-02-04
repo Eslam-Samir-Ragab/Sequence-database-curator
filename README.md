@@ -4,7 +4,7 @@ This program can curate nucleotide and/or protein databases from redundant and p
 
 ## Input:
 - File containing all the different downloaded sequences in FASTA format.
-- Or a directory containing all your desired files in the same extension
+- Or a directory containing all your desired files in the same extension.
 
 ## Processing:
 1. It removes the redundant sequences.
@@ -42,3 +42,21 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
 
 
 ### Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
+
+# Fastq Dereplicator
+This program can remove Fastq sequences from one or multiple fastq files and return the dereplicated version in fasta format for other processing.
+## Input:
+- File containing all the different sequences in fastq format.
+- Or a directory containing all your desired files in the same extension.
+
+## Processing:
+- It removes the redundant sequences.
+## Output:
+Three files (**?_curated_seq_only.fasta**, **?_final.fasta** and **?.fasta**) contain only the unique sequences in your input file depending on your approach.
+- *?_curated_seq_only.fasta* : contains sequences without their annotations.
+- *?_final.fasta* : contains sequences with the exact annotation in your input file.
+- *?.fasta* : the same your fastq file but in a FASTA format.
+## Options:
+1. Two approaches (**largest possible length** and **smallest possible length**).
+  * largest possible length approach: gives the longest sequence.
+  * smallest possible length: gives the shortest sequence in your dataset.
