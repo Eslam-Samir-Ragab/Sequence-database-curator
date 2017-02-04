@@ -27,7 +27,7 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
 2.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
 3.	Open the file “**database_curator.2.py**” with (python.exe).
   * [Windows](http://stackoverflow.com/a/1527012/7414020)
-  * U/Linux : use the file “**database_curator.linux.2.py**” and the command `chmod u+x (Unix-Linux)database_curator.2.py`
+  * U/Linux : use the file “**database_curator.linux.2.py**” and the command `chmod u+x database_curator.linux.2.py`
   * Mac : use the file “**database_curator.2.py**” and the command `python database_curator.2.py`
 4.	State your variables and press Enter.
 
@@ -36,7 +36,7 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
 2.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
 3.	Open the file “**database_curator.3.py**” with (python.exe).
   * **[Windows](http://stackoverflow.com/a/1527012/7414020)**
-  * **U/Linux** : use the file “**database_curator.linux.3.py**” and the command `chmod u+x (Unix-Linux)database_curator.3.py`
+  * **U/Linux** : use the file “**database_curator.linux.3.py**” and the command `chmod u+x database_curator.linux.3.py`
   * **Mac** : use the file “**database_curator.2.py**” and the command `python database_curator.3.py`
 4.	State your variables and press Enter.
 
@@ -51,12 +51,24 @@ This program can remove Fastq sequences from one or multiple fastq files and ret
 
 ## Processing:
 - It removes the redundant sequences.
+
 ## Output:
 Three files (**?_curated_seq_only.fasta**, **?_final.fasta** and **?.fasta**) contain only the unique sequences in your input file depending on your approach.
 - *?_curated_seq_only.fasta* : contains sequences without their annotations.
 - *?_final.fasta* : contains sequences with the exact annotation in your input file.
 - *?.fasta* : the same your fastq file but in a FASTA format.
+
 ## Options:
 1. Two approaches (**largest possible length** and **smallest possible length**).
   * largest possible length approach: gives the longest sequence.
   * smallest possible length: gives the shortest sequence in your dataset.
+
+## How to use (Python 2.7 or later):
+1.	you need to install [python 2.7](https://www.python.org/downloads/) on your machine.
+2. you need to install [Numpy](https://pypi.python.org/pypi/numpy) and [Biopython](http://biopython.org/wiki/Download)
+3.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
+4.	Open the file “**fastq_dereplicator.py**” with (python.exe).
+  * [Windows](http://stackoverflow.com/a/1527012/7414020)
+  * U/Linux : use the file “**fastq_dereplicator.linux.py**” and the command `chmod u+x fastq_dereplicator.py`
+  * Mac : use the file “**fastq_dereplicator.py**” and the command `python fastq_dereplicator.py`
+4.	State your variables and press Enter.
