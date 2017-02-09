@@ -24,21 +24,23 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
 
 ## How to use (Python 2.7 or later):
 1.	you need to install [python 2.7](https://www.python.org/downloads/) on your machine.
-2.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
-3.	Open the file “**database_curator.2.py**” with (python.exe).
+2. you need to install [Numpy](https://pypi.python.org/pypi/numpy) and [Biopython](http://biopython.org/wiki/Download)
+3.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
+4.	Open the file “**database_curator.2.py**” with (python.exe).
   * [Windows](http://stackoverflow.com/a/1527012/7414020)
   * U/Linux : use the file “**database_curator.linux.2.py**” and the command `chmod u+x database_curator.linux.2.py`
   * Mac : use the file “**database_curator.2.py**” and the command `python database_curator.2.py`
-4.	State your variables and press Enter.
+5.	State your variables and press Enter.
 
 ## How to use (Python 3):
 1.	you need to install [python 3](https://www.python.org/downloads/) on your machine.
-2.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
-3.	Open the file “**database_curator.3.py**” with (python.exe).
+2. you need to install [Numpy](https://pypi.python.org/pypi/numpy) and [Biopython](http://biopython.org/wiki/Download)
+3.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
+4.	Open the file “**database_curator.3.py**” with (python.exe).
   * **[Windows](http://stackoverflow.com/a/1527012/7414020)**
   * **U/Linux** : use the file “**database_curator.linux.3.py**” and the command `chmod u+x database_curator.linux.3.py`
   * **Mac** : use the file “**database_curator.2.py**” and the command `python database_curator.3.py`
-4.	State your variables and press Enter.
+5.	State your variables and press Enter.
 
 
 ### Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
