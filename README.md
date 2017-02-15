@@ -10,13 +10,13 @@ This program can curate nucleotide and/or protein databases from redundant and p
 1. It removes the redundant sequences.
 2. It removes the partial sequences that are exact part from other sequences in your database.
 ## Output:
-Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene_deleted.fasta**) contain only the unique and more complete sequences in your input file depending on your approach.
-- *%gene_curated_seq_only.fasta* : contains sequences without their annotations.
-- *%gene_final.fasta* : contains sequences with the exact annotation in your database.
-- *%gene_deleted.fasta* : contains the names of the deleted seqeunces.
+Three files (**curated_seq_only.fasta**, **final.fasta** and **deleted.fasta**) contain only the unique and more complete sequences in your input file depending on your approach.
+- *curated_seq_only.fasta* : contains sequences without their annotations.
+- *final.fasta* : contains sequences with the exact annotation in your database.
+- *deleted.fasta* : contains the names of the deleted seqeunces.
 
 ## Options:
-1. Working on either **Protein (P) or Nucleotide (N)** databases.
+1. Working on either **protein (p) or nucleotide (n)** databases.
 2. Two approaches (**largest possible length** and **optimum length**).
   * largest possible length approach: gives the longest sequence even if it exceeds the length of your gene.
   * optimum length approach: gives only your gene provided you feed the approximate length of your protein.
@@ -32,6 +32,7 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
   * Mac : use the file “**database_curator.2.py**” and the command `python database_curator.2.py`
 5.	State your variables and press Enter.
 
+
 ## How to use (Python 3):
 1.	you need to install [python 3](https://www.python.org/downloads/) on your machine.
 2. you need to install [Numpy](https://pypi.python.org/pypi/numpy) and [Biopython](http://biopython.org/wiki/Download)
@@ -42,35 +43,38 @@ Three files (**%gene_curated_seq_only.fasta**, **%gene_final.fasta** and **%gene
   * **Mac** : use the file “**database_curator.2.py**” and the command `python database_curator.3.py`
 5.	State your variables and press Enter.
 
+List of options in the program:
+
+| No |  Option  |                                            function                                           |
+|:--:|:--------:|:---------------------------------------------------------------------------------------------:|
+|  1 |    -in   | indicate input file, you can use the full path to your file (C:\Users\user\Desktop\dna.fasta) |
+|  2 |    -n    | process nucleotide sequences                                                                  |
+|  3 |    -p    | process protein sequences                                                                     |
+|  4 | -desired | indicate a nomenclature for your output files                                                 |
+|  5 |  -multi  | if there are multiple files to process                                                        |
+|  6 | -optimum | if optimum length approach is wanted'                                                         |
+
+##Examples
+
+if you want to process a nucleotide sequences use the following command
+
+> `python database_curator.2.py -in (input_file) -n`
+
+if you want to process a nucleotide sequences with optimum length approach use the following command
+
+> `python database_curator.2.py -in (input_file) -n -optimum`
+
+if you want to process a protein sequences use the following command
+
+> `python database_curator.2.py -in (input_file) -p`
+
+if you want to begin your files with a certain name
+
+> `python database_curator.2.py -in (input_file) -p -desired (your_desired_name)`
+
+if you want to process multiple files in the same directory
+
+> `python database_curator.2.py -in (input_file) -p -multi`
+
 
 ### Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
-
-# Fastq Dereplicator
-This program can remove Fastq sequences from one or multiple fastq files and return the dereplicated version in fasta format for other processing.
-## Input:
-- File containing all the different sequences in fastq format.
-- Or a directory containing all your desired files in the same extension.
-
-## Processing:
-- It removes the redundant sequences.
-
-## Output:
-Three files (**?_curated_seq_only.fasta**, **?_final.fasta** and **?.fasta**) contain only the unique sequences in your input file depending on your approach.
-- *?_curated_seq_only.fasta* : contains sequences without their annotations.
-- *?_final.fasta* : contains sequences with the exact annotation in your input file.
-- *?.fasta* : the same your fastq file but in a FASTA format.
-
-## Options:
-1. Two approaches (**largest possible length** and **smallest possible length**).
-  * largest possible length approach: gives the longest sequence.
-  * smallest possible length: gives the shortest sequence in your dataset.
-
-## How to use (Python 2.7 or later):
-1.	you need to install [python 2.7](https://www.python.org/downloads/) on your machine.
-2. you need to install [Numpy](https://pypi.python.org/pypi/numpy) and [Biopython](http://biopython.org/wiki/Download)
-3.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
-4.	Open the file “**fastq_dereplicator.py**” with (python.exe).
-  * [Windows](http://stackoverflow.com/a/1527012/7414020)
-  * U/Linux : use the file “**fastq_dereplicator.linux.py**” and the command `chmod u+x fastq_dereplicator.py`
-  * Mac : use the file “**fastq_dereplicator.py**” and the command `python fastq_dereplicator.py`
-4.	State your variables and press Enter.
