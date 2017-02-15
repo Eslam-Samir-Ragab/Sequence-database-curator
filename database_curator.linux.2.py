@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
+import argparse
 import time
 from Bio import SeqIO
 from Bio.Seq import reverse_complement
@@ -88,25 +89,28 @@ def remove_redundancy(totalseqs,totalnames,filename):          #remove redundanc
 
                   #begining of the code !!!
 
-database = str(raw_input("Protein or Nucleotide Database? P/N : "))
-if database.upper() != 'P' and database.upper() != 'N':
+parser = argparse.ArgumentParser(prog='Database curator program',usage='\n%(prog)s :curates nucleotide and/or protein databases from redundant and partial redundant sequences.\n\n Eslam S.Ibrahim\n\n eslam.ebrahim@pharma.cu.edu.eg')
+parser.add_argument('-p',dest='database',action='store_const',const='p',help='protein sequences')
+parser.add_argument('-n',dest='database',action='store_const',const='n',help='nucleotide sequences')
+parser.add_argument('-desired',type=str,dest='gene',help='desired name for your files')
+parser.add_argument('-multi',dest='multiples',default=False,action='store_true',help='if there are multiple files to process')
+parser.add_argument('-in',dest='file_name',type=argparse.FileType('r'),required=True)
+parser.add_argument('-optimum',dest='optimum_length_approach',default=False,action='store_true',help='if optimum length approach are wanted')
+args=parser.parse_args()
+
+database = args.database
+gene = args.gene
+multiples=args.multiples
+
+if database != 'p' and database != 'n':
     sys.exit("\n\nPlease specify your type of database !\n")
 
-path = str(raw_input("Enter original FASTA file's path : "))
-if path == '' or path == ' ':
-    sys.exit("\n\nThere is no directory in this path !\n")
-
-gene = str(raw_input("Enter gene's name : "))
 intermediate_file='%s_curated_seq_only.fasta' %gene
 final_file='%s_final.fasta' %gene
 deleted_file='%s_deleted.fasta' %gene
-os.chdir(path)
 
-multiples=str(raw_input("Your data is in one file Y/N : "))
-if multiples.upper() != 'Y' and multiples.upper() != 'N':
-    sys.exit("\n\nPlease specify your data either in one file or not !\n")
-
-if multiples.upper()=='N':
+if multiples==True:
+    path = str(raw_input("Enter original FASTA files' path : "))
     ext=str(raw_input("Enter your files' extension (fasta, fas, txt, ...) : "))
     if '.' in ext:
         sys.exit("\n\nPlease write the extension only without '.' !\n")
@@ -120,9 +124,7 @@ if multiples.upper()=='N':
                 result.write(line)
     file_name='%s.fasta' %gene
 else:
-    file_name = str(raw_input("Enter original FASTA file's name : "))
-    if os.path.isfile(file_name) == False:
-        sys.exit("\n\nYour file's name and / or your path is incorrect !\n")
+    file_name = args.file_name
 
 start_time = time.clock()
 
@@ -130,18 +132,18 @@ totalnames,totalseqs=parsing(file_name)
 
 medium_time=time.clock()                                        #in case if we want the time
 
-if database.upper() == 'N':
-    switch= str(raw_input("Do you want to have the optimum length approach? Y/N : "))
-    if switch.upper() == 'Y':
+if database == 'n':
+    optimum = args.optimum_length_approach
+    if optimum == True:
         prot_length = int(raw_input("Enter protein's length : "))
         medium2_time=time.clock()                                        #in case if we want the time
         remove_redundancy_Y(totalseqs,totalnames,intermediate_file,prot_length)
-    elif switch.upper() == 'N':
+    elif optimum == False:
         medium3_time=time.clock()                                        #in case if we want the time
         remove_redundancy_N(totalseqs,totalnames,intermediate_file)
     else:
         sys.exit("\n\nPlease specify your approach !\n")
-elif database.upper() == 'P':
+elif database == 'p':
     remove_redundancy(totalseqs,totalnames,intermediate_file)
 
 curatedseqs=parsing(intermediate_file)[1]
@@ -158,10 +160,10 @@ with open(deleted_file,'w') as f:
     for i in range(1,len(deleted)):
         f.write('\n%s\n'%deleted[i])
 
-if database.upper()=='P':
+if database=='p':
     time_of_calc = time.clock() - start_time
 else:
-    if switch.upper()=='Y':
+    if optimum==True:
         time_of_calc= (time.clock()-medium2_time) + (medium_time-start_time)
     else:
         time_of_calc= (time.clock()-medium3_time) + (medium_time-start_time)
