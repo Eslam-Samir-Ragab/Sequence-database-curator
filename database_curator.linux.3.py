@@ -94,8 +94,8 @@ parser.add_argument('-p',dest='database',action='store_const',const='p',help='pr
 parser.add_argument('-n',dest='database',action='store_const',const='n',help='nucleotide sequences')
 parser.add_argument('-desired',type=str,dest='gene',help='desired name for your files')
 parser.add_argument('-multi',dest='multiples',default=False,action='store_true',help='if there are multiple files to process')
-parser.add_argument('-in',dest='file_name',type=argparse.FileType('r'),required=True)
-parser.add_argument('-optimum',dest='optimum_length_approach',default=False,action='store_true',help='if optimum length approach are wanted')
+parser.add_argument('-in',dest='file_name',type=argparse.FileType('r'))
+parser.add_argument('-optimum',dest='optimum_length_approach',default=False,action='store_true',help='if optimum length approach is wanted')
 args=parser.parse_args()
 
 database = args.database
