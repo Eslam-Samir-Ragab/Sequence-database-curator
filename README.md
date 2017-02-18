@@ -28,8 +28,8 @@ Three files (**curated_seq_only.fasta**, **final.fasta** and **deleted.fasta**) 
 3.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
 4.	Open the file “**database_curator.2.py**” with (python.exe).
   * [Windows](http://stackoverflow.com/a/1527012/7414020)
-  * U/Linux : use the file “**database_curator.linux.2.py**” and the command `chmod u+x database_curator.linux.2.py`
-  * Mac : use the file “**database_curator.2.py**” and the command `python database_curator.2.py`
+  * U/Linux : use the command `chmod u+x database_curator.2.py`
+  * Mac : use the command `python database_curator.2.py`
 5.	State your variables and press Enter.
 
 
@@ -39,21 +39,24 @@ Three files (**curated_seq_only.fasta**, **final.fasta** and **deleted.fasta**) 
 3.	Click “Clone or download” > “Download ZIP” > extract the downloaded file.
 4.	Open the file “**database_curator.3.py**” with (python.exe).
   * **[Windows](http://stackoverflow.com/a/1527012/7414020)**
-  * **U/Linux** : use the file “**database_curator.linux.3.py**” and the command `chmod u+x database_curator.linux.3.py`
-  * **Mac** : use the file “**database_curator.2.py**” and the command `python database_curator.3.py`
+  * **U/Linux** : use thecommand `chmod u+x database_curator.3.py`
+  * **Mac** : use the command `python database_curator.3.py`
 5.	State your variables and press Enter.
 
 List of options in the program:
 
 | No |    Option   |                                            function                                           |
 |:--:|:-----------:|:---------------------------------------------------------------------------------------------:|
-|  1 |     -in     | indicate input file, you can use the full path to your file (C:\Users\user\Desktop\dna.fasta) |
-|  2 |      -n     | process nucleotide sequences                                                                  |
-|  3 |      -p     | process protein sequences                                                                     |
+|  1 |   * -in     | indicate input file, you can use the full path to your file (C:\Users\user\Desktop\dna.fasta) |
+|  2 |   *  -n     | process nucleotide sequences                                                                  |
+|  3 |   *  -p     | process protein sequences                                                                     |
 |  4 |   -desired  | indicate a nomenclature for your output files                                                 |
 |  5 |    -multi   | if there are multiple files to process                                                        |
 |  6 |   -optimum  | if optimum length approach is wanted'                                                         |
 |  7 | -h or -help | show the help for the program                                                                 |
+
+**Required** (*)  -n and -p are mutually exclusive flags
+
 
 ## Examples
 
