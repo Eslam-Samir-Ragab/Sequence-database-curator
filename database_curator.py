@@ -1,7 +1,10 @@
+#!/usr/bin/env python
+from __future__ import print_function
 import sys
 import os
 import argparse
 import time
+from builtins import input
 from Bio import SeqIO
 from Bio.Seq import reverse_complement
 
@@ -33,7 +36,7 @@ def remove_redundancy_N(totalseqs,totalnames,filename):          #remove redunda
         f.write(('>seq %d\n%s') %((1),result[0]))
         for i in range(1,len(result)):
             f.write(('\n>seq %d\n%s') %((i+1),result[i]))
-    print 'deleted sequences =',(len(totalseqs)-len(result))
+    print ('deleted sequences =',(len(totalseqs)-len(result)))
 
 def remove_redundancy_Y(totalseqs,totalnames,filename,prot_length):             #remove redundancy returning the optimum length sequence
     editing=totalseqs[:]
@@ -63,7 +66,7 @@ def remove_redundancy_Y(totalseqs,totalnames,filename,prot_length):             
         f.write(('>seq %d\n%s') %((1),result[0]))
         for i in range(1,len(result)):
             f.write(('\n>seq %d\n%s') %((i+1),result[i]))
-    print 'deleted sequences =',(len(totalseqs)-len(result))
+    print ('deleted sequences =',(len(totalseqs)-len(result)))
 
 def remove_redundancy(totalseqs,totalnames,filename):          #remove redundancy returning the largest possible sequence
     editing=totalseqs[:]
@@ -84,7 +87,7 @@ def remove_redundancy(totalseqs,totalnames,filename):          #remove redundanc
         f.write(('>seq %d\n%s') %((1),result[0]))
         for i in range(1,len(result)):
             f.write(('\n>seq %d\n%s') %((i+1),result[i]))
-    print 'deleted sequences =',(len(totalseqs)-len(result))
+    print ('deleted sequences =',(len(totalseqs)-len(result)))
 
                   #begining of the code !!!
 
@@ -109,8 +112,8 @@ final_file='%s_final.fasta' %gene
 deleted_file='%s_deleted.fasta' %gene
 
 if multiples==True:
-    path = str(raw_input("Enter original FASTA files' path : "))
-    ext=str(raw_input("Enter your files' extension (fasta, fas, txt, ...) : "))
+    path = str(input("Enter original FASTA files' path : "))
+    ext=str(input("Enter your files' extension (fasta, fas, txt, ...) : "))
     if '.' in ext:
         sys.exit("\n\nPlease write the extension only without '.' !\n")
     import glob
@@ -134,7 +137,7 @@ medium_time=time.clock()                                        #in case if we w
 if database == 'n':
     optimum = args.optimum_length_approach
     if optimum == True:
-        prot_length = int(raw_input("Enter protein's length : "))
+        prot_length = int(input("Enter protein's length : "))
         medium2_time=time.clock()                                        #in case if we want the time
         remove_redundancy_Y(totalseqs,totalnames,intermediate_file,prot_length)
     elif optimum == False:
@@ -167,4 +170,4 @@ else:
     else:
         time_of_calc= (time.clock()-medium3_time) + (medium_time-start_time)
 
-print time_of_calc, "seconds"                                      #in case if we want the time"""
+print (time_of_calc, "seconds")                                      #in case if we want the time"""
