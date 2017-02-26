@@ -96,6 +96,7 @@ parser.add_argument('-p',dest='database',action='store_const',const='p',help='pr
 parser.add_argument('-n',dest='database',action='store_const',const='n',help='nucleotide sequences')
 parser.add_argument('-desired',type=str,dest='gene',help='desired name for your files')
 parser.add_argument('-multi',dest='multiples',default=False,action='store_true',help='if there are multiple files to process')
+parser.add_argument('-fastq',dest='fastq',default=False,action='store_true',help='if your data is in fastq format')
 parser.add_argument('-in',dest='file_name',type=argparse.FileType('r'))
 parser.add_argument('-optimum',dest='optimum_length_approach',default=False,action='store_true',help='if optimum length approach is wanted')
 args=parser.parse_args()
@@ -103,6 +104,7 @@ args=parser.parse_args()
 database = args.database
 gene = args.gene
 multiples=args.multiples
+fastq=args.fastq
 
 if database != 'p' and database != 'n':
     sys.exit("\n\nPlease specify your type of database !\n")
@@ -127,6 +129,10 @@ if multiples==True:
     file_name='%s.fasta' %gene
 else:
     file_name = args.file_name
+
+if fastq == True:
+    SeqIO.convert(file_name, "fastq", '%s.fasta'%gene, "fasta")
+    file_name='%s.fasta' %gene
 
 start_time = time.clock()
 
@@ -157,10 +163,11 @@ with open(final_file,'w') as f:
     for i in range(1,len(curatedseqs)):
         f.write('\n%s\n%s' % (curatednames[i],curatedseqs[i]))
 
-with open(deleted_file,'w') as f:
-    f.write('%s\n'%deleted[0])
-    for i in range(1,len(deleted)):
-        f.write('\n%s\n'%deleted[i])
+if len(deleted) > 0:
+    with open(deleted_file,'w') as f:
+        f.write('%s\n'%deleted[0])
+        for i in range(1,len(deleted)):
+            f.write('\n%s\n'%deleted[i])
 
 if database=='p':
     time_of_calc = time.clock() - start_time
