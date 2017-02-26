@@ -3,7 +3,7 @@ This program can curate nucleotide and/or protein databases from redundant and p
 ![Summary of the program.](https://ppjpkw-ch3302.files.1drv.com/y3pdwEcVS3Zzm79n26oygTt4nJ1R-52Ziqvxpr29UPFhd72AERdJvinl95KnTvT5WZ8m9iScsinX0cLTyyMdly24jYX1sebuuEzzFuGpTlkxGwbtpwlU_LHZDJrVT3gHSV6ub79tHDQXg-d_tNT1GVWwqVbZ67YP-QDCosfs2zBuUo/Database%20curator.png?psid=1)
 
 ## Input:
-- File containing all the different downloaded sequences in FASTA format.
+- File containing all the different downloaded sequences in FASTA or FASTQ format.
 - Or a directory containing all your desired files in the same extension.
 
 ## Processing:
@@ -14,6 +14,7 @@ Three files (**curated_seq_only.fasta**, **final.fasta** and **deleted.fasta**) 
 - *curated_seq_only.fasta* : contains sequences without their annotations.
 - *final.fasta* : contains sequences with the exact annotation in your database.
 - *deleted.fasta* : contains the names of the deleted seqeunces.
+- *.fasta* : contains your data in fasta format if your data is in fastq.
 
 ## Options:
 1. Working on either **protein (p) or nucleotide (n)** databases.
@@ -41,9 +42,10 @@ List of options in the program:
 |  2 |   *  -n     | process nucleotide sequences                                                                  |
 |  3 |   *  -p     | process protein sequences                                                                     |
 |  4 |   -desired  | indicate a nomenclature for your output files                                                 |
-|  5 |    -multi   | if there are multiple files to process                                                        |
-|  6 |   -optimum  | if optimum length approach is wanted'                                                         |
-|  7 | -h or -help | show the help for the program                                                                 |
+|  5 |   -fastq    | if your data is in fastq format                                                               |
+|  6 |    -multi   | if there are multiple files to process                                                        |
+|  7 |   -optimum  | if optimum length approach is wanted'                                                         |
+|  8 | -h or -help | show the help for the program                                                                 |
 
 **Required** (*)  -n and -p are mutually exclusive flags
 
