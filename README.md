@@ -54,23 +54,27 @@ List of options in the program:
 
 if you want to process a nucleotide sequences use the following command
 
-`python database_curator.2.py -in (input_file) -n`
+`python database_curator.py -in (input_file) -n`
 
 if you want to process a nucleotide sequences with optimum length approach use the following command
 
-`python database_curator.2.py -in (input_file) -n -optimum`
+`python database_curator.py -in (input_file) -n -optimum`
 
 if you want to process a protein sequences use the following command
 
-`python database_curator.2.py -in (input_file) -p`
+`python database_curator.py -in (input_file) -p`
 
 if you want to begin your files with a certain name
 
-`python database_curator.2.py -in (input_file) -p -desired (your_desired_name)`
+`python database_curator.py -in (input_file) -p -desired (your_desired_name)`
 
 if you want to process multiple files in the same directory
 
-`python database_curator.2.py -in (input_file) -p -multi`
+`python database_curator.py -in (input_file) -p -multi`
+
+if you want to process a fastq file
+
+`python database_curator.py -in (input_file) -n -fastq`
 
 
 ### Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
