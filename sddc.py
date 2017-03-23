@@ -128,7 +128,7 @@ def derep_optimum(start_file,prot_length):                     #dereplication (o
                         break
                     elif comparing in seq and (prot_length*2.7+2.7) <= len(seq):
                         editing[j]=''
-                if reverse_complement(kmer) in seq:
+                if database =='n' and reverse_complement(kmer) in seq:
                     if reverse_complement(comparing) in seq and (prot_length*2.7+2.7) >= len(seq):
                         editing[i]=''
                         break
