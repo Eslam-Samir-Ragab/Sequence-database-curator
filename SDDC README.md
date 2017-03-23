@@ -13,7 +13,7 @@ This program can : dereplicates and/or filter nucleotide and/or protein database
 6.	State your variables and press Enter.
 
 
-List of options in the program:
+List of options in the program you can download it from [here](https://drive.google.com/file/d/0B752ugm5kNQcYUg4M1BTUmtKRjA/view?usp=sharing):
 
 <a href="http://www.freeimagehosting.net/commercial-photography/"><img src="http://i.imgur.com/ouwpiBu.png" alt="commercial photography locations"></a>
 
