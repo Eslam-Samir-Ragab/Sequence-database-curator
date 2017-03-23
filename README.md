@@ -1,4 +1,4 @@
-# Sequence-database-curator
+# Sequence Dereplicator and Database Curator (SDDC) program
 This program dereplicates and/or filter nucleotide and/or protein database from a list of names or sequences (by exact match).
 <a href="http://www.freeimagehosting.net/commercial-photography/"><img src="http://i.imgur.com/aBAzOyA.png" alt="commercial photography locations"></a>
 ## How to use:
