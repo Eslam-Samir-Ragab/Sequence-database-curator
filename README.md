@@ -12,6 +12,7 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
   * Mac : use the command `python sddc.py`
 6.	State your variables and press Enter.
 
+### **The full SDDC Cheat sheet and Notes are [here](https://drive.google.com/file/d/0B752ugm5kNQcUWt0LXpfTXpxUW8/view?usp=sharing)**
 
 List of options in the program you can download it from [here](https://drive.google.com/file/d/0B752ugm5kNQcYUg4M1BTUmtKRjA/view?usp=sharing):
 
