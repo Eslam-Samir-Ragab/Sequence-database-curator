@@ -100,9 +100,11 @@ def derep_longest(start_file,database):                         #dereplication (
                 if kmer in seq:
                     if comparing in seq:
                         editing[i]=''
+                        break
                 elif database=='n' and reverse_complement(kmer) in seq:
                     if reverse_complement(comparing) in seq:
                         editing[i]=''
+                        break
 
     editing=cleaner(editing)
     file_writer(output_file,starting_names,starting_sequences,editing)
