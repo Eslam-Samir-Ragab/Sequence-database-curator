@@ -1,6 +1,6 @@
 # Sequence Dereplicator and Database Curator (SDDC) program
 This program dereplicates and/or filter nucleotide and/or protein database from a list of names or sequences (by exact match).
-<a href="http://www.freeimagehosting.net/commercial-photography/"><img src="http://i.imgur.com/aBAzOyA.png" alt="commercial photography locations"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/description.png"></a>
 ## How to use:
 1.	you need to install [python 2.7](https://www.python.org/downloads/) or [python 3](https://www.python.org/downloads/) on your machine.
 2. you need to install [Numpy](https://pypi.python.org/pypi/numpy) and [Biopython](http://biopython.org/wiki/Download)
