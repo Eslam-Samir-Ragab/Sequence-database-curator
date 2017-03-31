@@ -16,7 +16,7 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
 
 List of options in the program you can download it from [here](https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/sddc-program):
 
-<a href="http://www.freeimagehosting.net/commercial-photography/"><img src="http://i.imgur.com/ouwpiBu.png" alt="commercial photography locations"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="http://i.imgur.com/ouwpiBu.png"></a>
 
 ## Examples
 
