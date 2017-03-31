@@ -12,9 +12,14 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
   * Mac : use the command `python sddc.py`
 6.	State your variables and press Enter.
 
-### **The full SDDC commands, Cheat sheet and notes are [here](https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/sddc-program)**
+### **The full SDDC commands, Cheat sheet and notes are [here](https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/SDDC%20Cheat%20sheet.pdf)**
 
-List of options in the program you can download it from [here](https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/sddc-program):
+## *Notes:*
+* The rate of SDDC as determined using Intel(R) Pentium(R) CPU G630 @ 2.70GHz 2.70 GHz Processor, 4.00 GB RAM, 32-bit Operating System
+
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/rate.png"></a>
+
+* List of options and commands in the program you can download it from [here](https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/SDDC%20Commands.pdf):
 
 <a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="http://i.imgur.com/ouwpiBu.png"></a>
 
@@ -44,5 +49,15 @@ if you want to filter a nucleotide sequences by sequence (only exclusive) use th
 
 `python sddc.py -in (input_file) -n -out (output_file) -mode filter -flt_by seq -flt_file (filter_file)`
 
-### Any errors please let me know via an e-mail with the subject "database_curator" to eslam.ebrahim@pharma.cu.edu.eg
+Example (1)
+
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.1.png"></a>
+
+Example (2)
+
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.2.png"></a>
+
+
+### Any errors please let me know via E-mail (eslam.ebrahim@pharma.cu.edu.eg)
+## Visit [my website](https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/) for more details, other publications, and contact
 
