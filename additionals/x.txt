@@ -1,0 +1,1 @@
+<a class="twitter-timeline" data-width="500" data-height="400" data-dnt="true" data-theme="dark" data-link-color="#E81C4F" href="https://twitter.com/islamsamir">Tweets by islamsamir</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
