@@ -154,7 +154,7 @@ parser.add_argument('-flt_file',dest='flt_file',help='Input file containing your
 parser.add_argument('-flt_by',dest='filter_approach',choices=['seq','name'],default='seq',help='The approach by which you wan your input file to be filtered')
 parser.add_argument('-p',dest='database',action='store_const',const='p',help='protein sequences')
 parser.add_argument('-n',dest='database',action='store_const',const='n',help='nucleotide sequences')
-parser.add_argument('-len',dest='length',default=20,type=int,help='length of k-mer (for seq filter mode only)')
+parser.add_argument('-len',dest='length',default=6,type=int,help='length of k-mer (for seq filter mode only)')
 parser.add_argument('-min_length',dest='minimum',default=1,type=int,help='minimum sequence length in your data (for dereplication only)')
 parser.add_argument('-multi',dest='multiples',default=False,action='store_true',help='if there are multiple files to process')
 parser.add_argument('-fastq',dest='fastq',default=False,action='store_true',help='if your data is in fastq format')
@@ -191,8 +191,8 @@ if (filteration == 'inclusive' or filteration == 'exclusive') and remove_file=='
 if filteration == 'inclusive' and filter_approach=='seq':
     sys.exit("\n\nfilteration criteria (inclusive or exclusive) works only if filter mode is by names\n")
 
-if length < 20:
-    sys.exit("\n\nminimum k-mer length = 20\n")
+if length < 6:
+    sys.exit("\n\nminimum k-mer length = 6\n")
 
 if optimum and prot_length < 1:
     sys.exit("\n\nPlease enter your portein length by the flag (-prot_length) !\n")
