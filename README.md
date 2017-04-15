@@ -21,7 +21,7 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
 
 * List of options and commands in the program you can download it from [here](https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/SDDC%20Commands.pdf):
 
-<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="http://i.imgur.com/ouwpiBu.png"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/commands.png"></a>
 
 ## Examples
 
