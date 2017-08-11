@@ -1,5 +1,9 @@
 # Sequence database curator
 This program can curate nucleotide and/or protein databases from redundant and partial redundant sequences for a specific gene and /or any groups of genes.
+
+##Please, cite: DOI: 10.13140/RG.2.2.24200.11529
+
+
 <a href="http://www.freeimagehosting.net/commercial-photography/"><img src="http://i.imgur.com/eFhxVTF.png" alt="commercial photography locations"></a>
 
 ## Input:
