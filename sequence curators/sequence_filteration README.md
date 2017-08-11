@@ -1,5 +1,8 @@
 # Sequence filteration Program
 This program can filter nucleotide and/or protein database from a list of names or sequences (by exact match).
+
+## Please, cite: DOI: 10.13140/RG.2.2.24200.11529
+
 <a href="http://www.freeimagehosting.net/commercial-photography/"><img src="http://i.imgur.com/RL6wMb0.png" alt="commercial photography locations"></a>
 
 ## Input:
