@@ -75,7 +75,6 @@ def remover_by_name (start_file,remove_file,filteration):     #remover (by names
     data=list(set(data))
     if filteration == 'exclusive':
         curated_data=[line for line in data for filter_name in filter_names if filter_name not in line]
-        curated_data=list(set(curated_data))
     elif filteration =='inclusive':
         curated_data=[line for line in data for filter_name in filter_names if filter_name in line]
     print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(curated_data),len(starting_names),len(curated_data)))
