@@ -54,7 +54,7 @@ if you want to filter a nucleotide sequences by sequence (only exclusive) use th
 
 Example (1)
 
-<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.1.png"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.1.png"></a>
 
 Example (2)
 
