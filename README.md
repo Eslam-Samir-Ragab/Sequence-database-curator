@@ -3,7 +3,7 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
 
 ## Please, cite: DOI: [10.1007/s00284-017-1327-6](https://link.springer.com/article/10.1007/s00284-017-1327-6)
 
-<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/description.png"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/description.png"></a>
 ## How to use:
 1.	you need to install [python 2.7](https://www.python.org/downloads/) or [python 3](https://www.python.org/downloads/) on your machine.
 2. you need to install [Numpy](https://pypi.python.org/pypi/numpy) and [Biopython](http://biopython.org/wiki/Download)
@@ -20,11 +20,11 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
 ## *Notes:*
 * The rate of SDDC as determined using Intel(R) Pentium(R) CPU G630 @ 2.70GHz 2.70 GHz Processor, 4.00 GB RAM, 32-bit Operating System
 
-<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/rate.png"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/rate.png"></a>
 
 * List of options and commands in the program you can download it from [here](https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/SDDC%20Commands.pdf):
 
-<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/commands.png"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/commands.png"></a>
 
 ## Examples
 
@@ -54,11 +54,11 @@ if you want to filter a nucleotide sequences by sequence (only exclusive) use th
 
 Example (1)
 
-<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.1.png"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.1.png"></a>
 
 Example (2)
 
-<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.2.png"></a>
+<a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.2.png"></a>
 
 
 ### Any errors please let me know via E-mail (eslam.ebrahim@pharma.cu.edu.eg)
