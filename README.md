@@ -61,6 +61,6 @@ Example (2)
 <a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/example.2.png"></a>
 
 
-### Any errors please let me know via E-mail (eslam.ebrahim@pharma.cu.edu.eg)
+### Any errors please send me an email to <eslam.ebrahim@pharma.cu.edu.eg>
 ## Visit [my website](https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/) for more details, other publications, and contact
 
