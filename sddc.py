@@ -15,6 +15,25 @@ def parsing_file (filename):                             #reading FASTA names an
         sequences+=['%s'%str(record.seq)]
     return names, sequences
 
+def file_writer_original_order(output_file,starting_names,starting_sequences,curated_sequences):          #write function by original order
+    print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(curated_sequences),len(starting_names),len(curated_sequences)))
+    indeces = [starting_sequences.index(curated_sequences[i]) for i in range(len(curated_sequences))]
+    indeces.sort()
+    with open(output_file,'w') as f:
+        name=starting_names[indeces[0]]
+        curated_names=[name]
+        f.write('%s\n%s' % (name,starting_sequences[indeces[0]]))
+        for i in indeces[1:]:
+            name=starting_names[i]
+            curated_names.append(name)
+            f.write('\n%s\n%s' % (name,starting_sequences[i]))
+    deleted= list(set([name for name in starting_names if name not in curated_names]))
+    if len(deleted) > 0:
+        with open('names_of_deleted.txt','w') as f:
+            f.write('%s\n'%deleted[0])
+            for i in range(1,len(deleted)):
+                f.write('\n%s\n'%deleted[i])
+
 def file_writer(output_file,starting_names,starting_sequences,curated_sequences):           #write function
     print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(curated_sequences),len(starting_names),len(curated_sequences)))
     with open(output_file,'w') as f:
@@ -63,7 +82,11 @@ def remover_by_seq(start_file,remove_file,database):       #remover (by sequence
                 if reverse_complement(comparing) in seq:
                     editing[i]=''
     editing=cleaner(editing)
-    file_writer(output_file,starting_names,starting_sequences,editing)
+    if original_order:
+        file_writer_original_order(output_file,starting_names,starting_sequences,editing)
+    else:
+        file_writer(output_file,starting_names,starting_sequences,editing)
+
 
 def remover_by_name (start_file,remove_file,filteration):     #remover (by names)
     with open(remove_file,'r') as f:
@@ -106,7 +129,10 @@ def derep_longest(start_file,database):                         #dereplication (
                         break
 
     editing=cleaner(editing)
-    file_writer(output_file,starting_names,starting_sequences,editing)
+    if original_order:
+        file_writer_original_order(output_file,starting_names,starting_sequences,editing)
+    else:
+        file_writer(output_file,starting_names,starting_sequences,editing)
 
 def derep_optimum(start_file,prot_length):                     #dereplication (optimum approach)
     starting_names,starting_sequences=parsing_file(start_file)
@@ -139,7 +165,10 @@ def derep_optimum(start_file,prot_length):                     #dereplication (o
                 editing[i]=''
                 break
     editing=cleaner(editing)
-    file_writer(output_file,starting_names,starting_sequences,editing)
+    if original_order:
+        file_writer_original_order(output_file,starting_names,starting_sequences,editing)
+    else:
+        file_writer(output_file,starting_names,starting_sequences,editing)
 
 
                   #begining of the code !!!
@@ -158,6 +187,7 @@ parser.add_argument('-min_length',dest='minimum',default=1,type=int,help='minimu
 parser.add_argument('-multi',dest='multiples',default=False,action='store_true',help='if there are multiple files to process')
 parser.add_argument('-fastq',dest='fastq',default=False,action='store_true',help='if your data is in fastq format')
 parser.add_argument('-optimum',dest='optimum_length_approach',default=False,action='store_true',help='if optimum length approach is wanted')
+parser.add_argument('-org_order',dest='original_order',default=False,action='store_true',help='if the original order of the sequences should be preserved')
 parser.add_argument('-prot_length',dest='prot_length',type=int,help='protein length (for optimum approach in dereplication mode only)')
 args=parser.parse_args()
 
@@ -175,6 +205,7 @@ minimum=args.minimum
 multiples=args.multiples
 fastq=args.fastq
 optimum = args.optimum_length_approach
+original_order = args.original_order
 prot_length = args.prot_length
 
                   #Checkers !!!
