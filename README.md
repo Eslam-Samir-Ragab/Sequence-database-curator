@@ -32,6 +32,10 @@ if you want to dereplicate protein sequences use the following command
 
 `python sddc.py -in (input_file) -p -out (output_file) -mode derep`
 
+if you want to dereplicate protein sequences and preserve the original order of the sequences in the new file use the following command
+
+`python sddc.py -in (input_file) -p -out (output_file) -mode derep -org_order`
+
 if you want to dereplicate protein sequences with a minimum length = 30 and sequences are in multiple files use the following command
 
 `python sddc.py -in (input_file) -p -out (output_file) -mode derep -min_length 30 -multi`
