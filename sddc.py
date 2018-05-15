@@ -106,6 +106,27 @@ def remover_by_name (start_file,remove_file,filteration):     #remover (by names
         for i in range(len(lines_to_write)):
             f.write('\n%s\n%s' % (lines_to_write[i][0],lines_to_write[i][1]))
 
+def remover_by_keyword (start_file,remove_file,filteration):     #remover (by kewords in Fasta headers)
+    filter_names=[]
+    with open(remove_file,'r') as f:
+        for line in f:
+            print (line)
+            items = line.rstrip().split(",")
+            filter_names += items
+    filter_names=list(set(filter_names))
+    starting_names,starting_sequences=parsing_file(start_file)
+    data=[(starting_names[i]+'&&'+starting_sequences[i]) for i in range(len(starting_names))]
+    data=list(set(data))
+    if filteration == 'exclusive':
+        curated_data=[line for line in data for filter_name in filter_names if filter_name not in line]
+    elif filteration =='inclusive':
+        curated_data=[line for line in data for filter_name in filter_names if filter_name in line]
+    print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(curated_data),len(starting_names),len(curated_data)))
+    with open(output_file,'w') as f:
+        lines_to_write = [line.split('&&') for line in curated_data]
+        for i in range(len(lines_to_write)):
+            f.write('\n%s\n%s' % (lines_to_write[i][0],lines_to_write[i][1]))
+
 def derep_longest(start_file,database):                         #dereplication (longest approach)
     starting_names,starting_sequences=parsing_file(start_file)
     if len(starting_sequences) < 1 :
@@ -176,6 +197,7 @@ def derep_optimum(start_file,prot_length):                     #dereplication (o
 parser = argparse.ArgumentParser(prog='Sequence Database Dereplicator and Curator (SDDC) program',usage='\n%(prog)s : dereplicates and/or filter nucleotide and/or protein database from a list of names or sequences (by exact match).\n\n Eslam S.Ibrahim\n\n eslam.ebrahim@pharma.cu.edu.eg')
 parser.add_argument('-mode',dest='mode',required=True,choices=['derep','filter'],help='dereplicate your file/files or filter your file from specific sequences or names')
 parser.add_argument('-approach',dest='filter',choices=['inclusive','exclusive'],default='exclusive',help='if you want to filter your file/files by names and/or sequences either inclusively or exclusively')
+parser.add_argument('-kw',dest='keywords',default=False,action='store_true',help='if you want to filter sequences by keywords in the fasta headers inclusively or exclusively')
 parser.add_argument('-out',dest='output_file',required=True,help='Your output file')
 parser.add_argument('-in',dest='input_file',type=argparse.FileType('r'),required=True,help='Input file containing your original data to be dereplicated and/or filtered')
 parser.add_argument('-flt_file',dest='flt_file',help='Input file containing your listed names or sequences to be filtered from your original file')
@@ -199,6 +221,7 @@ output_file=args.output_file
 input_file=args.input_file
 remove_file=args.flt_file
 filter_approach=args.filter_approach
+keywords=args.keywords
 database=args.database
 length=args.length
 minimum=args.minimum
@@ -209,7 +232,6 @@ original_order = args.original_order
 prot_length = args.prot_length
 
                   #Checkers !!!
-
 start_time = time.clock()
 
 if database != 'p' and database != 'n':
@@ -230,9 +252,10 @@ if optimum and prot_length < 1:
 
                   #Processing !!!
 
-if mode=='filter' and filter_approach=='name':
+if mode=='filter' and filter_approach=='name' and not keywords:
     remover_by_name(input_file,remove_file,filteration)
-
+elif mode=='filter' and filter_approach=='name' and keywords:
+    remover_by_keyword (input_file,remove_file,filteration)
 elif mode=='filter' and filter_approach=='seq':
     remover_by_seq(input_file,remove_file,database)
 
