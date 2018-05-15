@@ -48,9 +48,17 @@ if you want to filter a protein sequences inclusively by name (i.e. you want to 
 
 `python sddc.py -in (input_file) -p -out (output_file) -mode filter -flt_by name -flt_file (filter_file) -approach inclusive`
 
+if you want to filter a protein sequences inclusively by keyword(s) (i.e. you want to retrieve only seqeunces that you've specified the keywords (separated by a comma) in their names) use the following command
+
+`python sddc.py -in (input_file) -p -out (output_file) -mode filter -flt_by name -flt_file (filter_file in csv) -approach inclusive -kw`
+
 if you want to filter a protein sequences exclusively by name (i.e. you want to retrieve the seqeunces that aren't present in your filter file) use the following command
 
 `python sddc.py -in (input_file) -p -out (output_file) -mode filter -flt_by name -flt_file (filter_file) -approach exclusive`
+
+if you want to filter a protein sequences exclusively by keyword(s) in their names (i.e. you want to retrieve the seqeunces that certain keywords (separated be a comma) aren't present in your filter file) use the following command
+
+`python sddc.py -in (input_file) -p -out (output_file) -mode filter -flt_by name -flt_file (filter_file in csv) -approach exclusive -kw`
 
 if you want to filter a nucleotide sequences by sequence (only exclusive) use the following command
 
