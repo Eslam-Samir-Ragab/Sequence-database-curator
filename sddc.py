@@ -103,14 +103,13 @@ def remover_by_name (start_file,remove_file,filteration):     #remover (by names
     print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(curated_data),len(starting_names),len(curated_data)))
     with open(output_file,'w') as f:
         lines_to_write = [line.split('&&') for line in curated_data]
-        for i in range(len(lines_to_write)):
+        f.write('%s\n%s' % (lines_to_write[0][0],lines_to_write[0][1]))
+        for i in range(1,len(lines_to_write)):
             f.write('\n%s\n%s' % (lines_to_write[i][0],lines_to_write[i][1]))
-
 def remover_by_keyword (start_file,remove_file,filteration):     #remover (by kewords in Fasta headers)
     filter_names=[]
     with open(remove_file,'r') as f:
         for line in f:
-            print (line)
             items = line.rstrip().split(",")
             filter_names += items
     filter_names=list(set(filter_names))
@@ -118,14 +117,26 @@ def remover_by_keyword (start_file,remove_file,filteration):     #remover (by ke
     data=[(starting_names[i]+'&&'+starting_sequences[i]) for i in range(len(starting_names))]
     data=list(set(data))
     if filteration == 'exclusive':
-        curated_data=[line for line in data for filter_name in filter_names if filter_name not in line]
+        for i in range(len(data)):
+            for filter_name in filter_names:
+                if filter_name in data[i]:
+                    data[i]=''
+                    break
+        data=cleaner(data)
+        print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(data),len(starting_names),len(data)))
+        with open(output_file,'w') as f:
+            lines_to_write = [line.split('&&') for line in data]
+            f.write('%s\n%s' % (lines_to_write[0][0],lines_to_write[0][1]))
+            for i in range(1,len(lines_to_write)):
+                f.write('\n%s\n%s' % (lines_to_write[i][0],lines_to_write[i][1]))
     elif filteration =='inclusive':
         curated_data=[line for line in data for filter_name in filter_names if filter_name in line]
-    print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(curated_data),len(starting_names),len(curated_data)))
-    with open(output_file,'w') as f:
-        lines_to_write = [line.split('&&') for line in curated_data]
-        for i in range(len(lines_to_write)):
-            f.write('\n%s\n%s' % (lines_to_write[i][0],lines_to_write[i][1]))
+        print ('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' %(len(starting_names)-len(curated_data),len(starting_names),len(curated_data)))
+        with open(output_file,'w') as f:
+            lines_to_write = [line.split('&&') for line in curated_data]
+            f.write('%s\n%s' % (lines_to_write[0][0],lines_to_write[0][1]))
+            for i in range(1,len(lines_to_write)):
+                f.write('\n%s\n%s' % (lines_to_write[i][0],lines_to_write[i][1]))
 
 def derep_longest(start_file,database):                         #dereplication (longest approach)
     starting_names,starting_sequences=parsing_file(start_file)
