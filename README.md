@@ -17,6 +17,10 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
 
 ### **The full SDDC commands, Cheat sheet and notes are [here](https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/SDDC%20Cheat%20sheet.pdf)**
 
+## *Updates in SDDC v2.0:*
+1. You can filter the sequences using only keywords (separated by a comma) inclusively or exclusively by adding (-kw) argument to your normal command line.
+2. You can get your sequences in their original order after dereplication and/or sequence filtration by adding (-org_order) to your normal command line.
+
 ## *Notes:*
 * The rate of SDDC as determined using Intel(R) Pentium(R) CPU G630 @ 2.70GHz 2.70 GHz Processor, 4.00 GB RAM, 32-bit Operating System
 
