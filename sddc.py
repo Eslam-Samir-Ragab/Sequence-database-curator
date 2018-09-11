@@ -150,7 +150,11 @@ def remover_by_keyword(start_file, filter_file, filteration):
             for i in range(1, len(lines_to_write)):
                 f.write('\n%s\n%s' % (lines_to_write[i][0], lines_to_write[i][1]))
     elif filteration == 'inclusive':
-        curated_data = [line for line in data for filter_name in filter_names if filter_name in line]
+        curated_data = []
+        for line in data:
+            for filter_name in filter_names:
+                if (filter_name in line) and (line not in curated_data):
+                    curated_data.append(line)
         print('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' % (
         len(starting_names) - len(curated_data), len(starting_names), len(curated_data)))
         with open(output_file, 'w') as f:
