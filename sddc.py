@@ -156,7 +156,7 @@ def remover_by_keyword(start_file, filter_file, filteration):
                 if (filter_name in line) and (line not in curated_data):
                     curated_data.append(line)
         print('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' % (
-        len(starting_names) - len(curated_data), len(starting_names), len(curated_data)))
+            len(starting_names) - len(curated_data), len(starting_names), len(curated_data)))
         with open(output_file, 'w') as f:
             lines_to_write = [line.split('&&') for line in curated_data]
             f.write('%s\n%s' % (lines_to_write[0][0], lines_to_write[0][1]))
