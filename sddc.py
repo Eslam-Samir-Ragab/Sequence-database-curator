@@ -17,46 +17,55 @@ def parsing_file(filename):
     return names, sequences
 
 
-def file_writer_original_order(output_file, starting_names, starting_sequences, curated_sequences):
+def get_new_names(filename):
+    # reading the csv file for new names
+    import csv
+    with open(filename, mode='r') as exchange:
+        reader = csv.reader(exchange)
+        new_names_dict = {str(row[0]): str(row[1]) for row in reader}
+    return new_names_dict
+
+
+def file_writer_original_order(out_file, starting_names, starting_sequences, curated_sequences):
     # write function by original order
     print('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' % (
-    len(starting_names) - len(curated_sequences), len(starting_names), len(curated_sequences)))
-    indeces = [starting_sequences.index(curated_sequences[i]) for i in range(len(curated_sequences))]
-    indeces.sort()
-    with open(output_file, 'w') as f:
-        name = starting_names[indeces[0]]
+        len(starting_names) - len(curated_sequences), len(starting_names), len(curated_sequences)))
+    indices = [starting_sequences.index(curated_sequences[i]) for i in range(len(curated_sequences))]
+    indices.sort()
+    with open(out_file, 'w') as out:
+        name = starting_names[indices[0]]
         curated_names = [name]
-        f.write('%s\n%s' % (name, starting_sequences[indeces[0]]))
-        for i in indeces[1:]:
+        out.write('%s\n%s' % (name, starting_sequences[indices[0]]))
+        for i in indices[1:]:
             name = starting_names[i]
             curated_names.append(name)
-            f.write('\n%s\n%s' % (name, starting_sequences[i]))
+            out.write('\n%s\n%s' % (name, starting_sequences[i]))
     deleted = list(set([name for name in starting_names if name not in curated_names]))
     if len(deleted) > 0:
-        with open('names_of_deleted.txt', 'w') as f:
-            f.write('%s\n' % deleted[0])
+        with open('names_of_deleted.txt', 'w') as out:
+            out.write('%s\n' % deleted[0])
             for i in range(1, len(deleted)):
-                f.write('\n%s\n' % deleted[i])
+                out.write('\n%s\n' % deleted[i])
 
 
-def file_writer(output_file, starting_names, starting_sequences, curated_sequences):
+def file_writer(out_file, starting_names, starting_sequences, curated_sequences):
     # write function
     print('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' % (
-    len(starting_names) - len(curated_sequences), len(starting_names), len(curated_sequences)))
-    with open(output_file, 'w') as f:
+        len(starting_names) - len(curated_sequences), len(starting_names), len(curated_sequences)))
+    with open(out_file, 'w') as out:
         name = starting_names[starting_sequences.index(curated_sequences[0])]
         curated_names = [name]
-        f.write('%s\n%s' % (name, curated_sequences[0]))
+        out.write('%s\n%s' % (name, curated_sequences[0]))
         for i in range(1, len(curated_sequences)):
             name = starting_names[starting_sequences.index(curated_sequences[i])]
             curated_names.append(name)
-            f.write('\n%s\n%s' % (name, curated_sequences[i]))
+            out.write('\n%s\n%s' % (name, curated_sequences[i]))
     deleted = list(set([name for name in starting_names if name not in curated_names]))
     if len(deleted) > 0:
-        with open('names_of_deleted.txt', 'w') as f:
-            f.write('%s\n' % deleted[0])
+        with open('names_of_deleted.txt', 'w') as out:
+            out.write('%s\n' % deleted[0])
             for i in range(1, len(deleted)):
-                f.write('\n%s\n' % deleted[i])
+                out.write('\n%s\n' % deleted[i])
 
 
 def cleaner(_list):
@@ -72,12 +81,12 @@ def kmer_gen(sequence, k, start):
     return kmer
 
 
-def remover_by_seq(start_file, remove_file, database):
+def remover_by_seq(start_file, filtration_file, sequence_type):
     # remover (by sequences)
     starting_names, starting_sequences = parsing_file(start_file)
-    removing_sequences = set(parsing_file(remove_file)[1])
+    removing_sequences = set(parsing_file(filtration_file)[1])
     if len(starting_sequences) < 1 or len(removing_sequences) < 1:
-        sys.exit("\n\nError in your input file or filteration file or incorrect filteration mode !\n")
+        sys.exit("\n\nError in your input file or filtration file or incorrect filtration mode !\n")
 
     editing = set(starting_sequences[:])
     common = editing & removing_sequences
@@ -91,7 +100,7 @@ def remover_by_seq(start_file, remove_file, database):
             if kmer in seq:
                 if comparing in seq:
                     editing[i] = ''
-            elif database == 'n' and reverse_complement(kmer) in seq:
+            elif sequence_type == 'n' and reverse_complement(kmer) in seq:
                 if reverse_complement(comparing) in seq:
                     editing[i] = ''
     editing = cleaner(editing)
@@ -101,41 +110,41 @@ def remover_by_seq(start_file, remove_file, database):
         file_writer(output_file, starting_names, starting_sequences, editing)
 
 
-def remover_by_name(start_file, filter_file, filteration):
+def remover_by_name(start_file, filter_file, filtration):
     # remover (by names)
-    with open(filter_file, 'r') as f:
-        lines = f.readlines()
-        filter_names = [line.rstrip() for line in lines if '>' in line]
+    with open(filter_file, 'r') as filter_file:
+        lines = filter_file.readlines()
+        filter_names = [row.rstrip() for row in lines if '>' in row]
 
     starting_names, starting_sequences = parsing_file(start_file)
     data = [(starting_names[i] + '&&' + starting_sequences[i]) for i in range(len(starting_names))]
     data = list(set(data))
-    if filteration == 'exclusive':
-        curated_data = [line for line in data for filter_name in filter_names if filter_name not in line]
-    elif filteration == 'inclusive':
-        curated_data = [line for line in data for filter_name in filter_names if filter_name in line]
+    if filtration == 'exclusive':
+        curated_data = [row for row in data for filter_name in filter_names if filter_name not in row]
+    else:
+        curated_data = [row for row in data for filter_name in filter_names if filter_name in row]
     print('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' % (
-    len(starting_names) - len(curated_data), len(starting_names), len(curated_data)))
-    with open(output_file, 'w') as f:
-        lines_to_write = [line.split('&&') for line in curated_data]
-        f.write('%s\n%s' % (lines_to_write[0][0], lines_to_write[0][1]))
+        len(starting_names) - len(curated_data), len(starting_names), len(curated_data)))
+    with open(output_file, 'w') as filter_file:
+        lines_to_write = [row.split('&&') for row in curated_data]
+        filter_file.write('%s\n%s' % (lines_to_write[0][0], lines_to_write[0][1]))
         for i in range(1, len(lines_to_write)):
-            f.write('\n%s\n%s' % (lines_to_write[i][0], lines_to_write[i][1]))
+            filter_file.write('\n%s\n%s' % (lines_to_write[i][0], lines_to_write[i][1]))
 
 
-def remover_by_keyword(start_file, filter_file, filteration):
-    # remover (by kewords in Fasta headers)
+def remover_by_keyword(start_file, filter_file, filtration):
+    # remover (by keywords in FASTA headers)
     filter_names = []
     with open(filter_file, 'r') as f:
-        for line in f:
-            items = line.rstrip().split(",")
+        for row in f:
+            items = row.rstrip().split(",")
             filter_names += items
     filter_names = list(set(filter_names))
     starting_names, starting_sequences = parsing_file(start_file)
     data = [(starting_names[i] + '&&' + starting_sequences[i]) for i in range(len(starting_names))]
     if not original_order:
         data = list(set(data))
-    if filteration == 'exclusive':
+    if filtration == 'exclusive':
         for i in range(len(data)):
             for filter_name in filter_names:
                 if filter_name in data[i]:
@@ -143,22 +152,22 @@ def remover_by_keyword(start_file, filter_file, filteration):
                     break
         data = cleaner(data)
         print('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' % (
-        len(starting_names) - len(data), len(starting_names), len(data)))
+            len(starting_names) - len(data), len(starting_names), len(data)))
         with open(output_file, 'w') as f:
-            lines_to_write = [line.split('&&') for line in data]
+            lines_to_write = [row.split('&&') for row in data]
             f.write('%s\n%s' % (lines_to_write[0][0], lines_to_write[0][1]))
             for i in range(1, len(lines_to_write)):
                 f.write('\n%s\n%s' % (lines_to_write[i][0], lines_to_write[i][1]))
-    elif filteration == 'inclusive':
+    elif filtration == 'inclusive':
         curated_data = []
-        for line in data:
+        for row in data:
             for filter_name in filter_names:
-                if (filter_name in line) and (line not in curated_data):
-                    curated_data.append(line)
+                if (filter_name in row) and (row not in curated_data):
+                    curated_data.append(row)
         print('\n-------\nfiltered sequences = %d from %d starting sequences\nresulting sequence = %d sequences' % (
             len(starting_names) - len(curated_data), len(starting_names), len(curated_data)))
         with open(output_file, 'w') as f:
-            lines_to_write = [line.split('&&') for line in curated_data]
+            lines_to_write = [row.split('&&') for row in curated_data]
             f.write('%s\n%s' % (lines_to_write[0][0], lines_to_write[0][1]))
             for i in range(1, len(lines_to_write)):
                 f.write('\n%s\n%s' % (lines_to_write[i][0], lines_to_write[i][1]))
@@ -194,7 +203,8 @@ def derep_longest(start_file, sequence_type):
         file_writer(output_file, starting_names, starting_sequences, editing)
 
 
-def derep_optimum(start_file, protein_length):  # dereplication (optimum approach)
+def derep_optimum(start_file, protein_length):
+    # dereplication (optimum approach)
     starting_names, starting_sequences = parsing_file(start_file)
     if len(starting_sequences) < 1:
         sys.exit("\n\nError in your input file !\n")
@@ -230,13 +240,33 @@ def derep_optimum(start_file, protein_length):  # dereplication (optimum approac
     else:
         file_writer(output_file, starting_names, starting_sequences, editing)
 
-        # begining of the code !!!
+        # beginning of the code !!!
+
+
+def exchange_names(start_file, exchange_file, out_file):
+    ex_dict = get_new_names(exchange_file)
+    starting_names, starting_sequences = parsing_file(start_file)
+    mod_names = "&&".join(starting_names)
+    for old in ex_dict:
+        tempo = old
+        if ">" in tempo:
+            tempo = tempo.replace(">", "")
+        mod_names = mod_names.replace(tempo, ex_dict[old])
+    starting_names = mod_names.split("&&")
+    with open(out_file, 'w') as out:
+        out.write('%s\n%s' % (starting_names[0], starting_sequences[0]))
+        for i in range(1, len(starting_names)):
+            out.write('\n%s\n%s' % (starting_names[i], starting_sequences[i]))
+    print('\n-------\nexchanged headers = %d from %d total headers\n' % (len(ex_dict), len(starting_names)))
 
 
 parser = argparse.ArgumentParser(prog='Sequence Database Dereplicator and Curator (SDDC) program',
-                                 usage='\n%(prog)s : dereplicates and/or filter nucleotide and/or protein database from a list of names or sequences (by exact match).\n\n Eslam S.Ibrahim\n\n eslam.ebrahim@pharma.cu.edu.eg')
-parser.add_argument('-mode', dest='mode', required=True, choices=['derep', 'filter'],
-                    help='dereplicate your file/files or filter your file from specific sequences or names')
+                                 usage='\n%(prog)s : dereplicates and/or filter nucleotide and/or protein database '
+                                       'from a list of names or sequences (by exact match).\n\n Eslam S.Ibrahim\n\n '
+                                       'eslam.ebrahim@pharma.cu.edu.eg')
+parser.add_argument('-mode', dest='mode', required=True, choices=['derep', 'filter', 'exchange_headers'],
+                    help='dereplicate your file/files, filter your file from specific sequences or names, or exchange '
+                         'the FASTA headers')
 parser.add_argument('-approach', dest='filter', choices=['inclusive', 'exclusive'], default='exclusive',
                     help='if you want to filter your file(s) by names or sequences either inclusively or exclusively')
 parser.add_argument('-kw', dest='keywords', default=False, action='store_true',
@@ -246,6 +276,8 @@ parser.add_argument('-in', dest='input_file', type=argparse.FileType('r'), requi
                     help='Input file containing your original data to be dereplicated and/or filtered')
 parser.add_argument('-flt_file', dest='flt_file',
                     help='Input file containing your listed names or sequences to be filtered from your original file')
+parser.add_argument('-ex_file', dest='ex_file',
+                    help='Exchange file containing the old names to be replaced with the new names in the FASTA format')
 parser.add_argument('-flt_by', dest='filter_approach', choices=['seq', 'name'], default='seq',
                     help='The approach by which you wan your input file to be filtered')
 parser.add_argument('-p', dest='database', action='store_const', const='p', help='protein sequences')
@@ -271,6 +303,7 @@ filteration = args.filter
 output_file = args.output_file
 input_file = args.input_file
 remove_file = args.flt_file
+ex_file = args.ex_file
 filter_approach = args.filter_approach
 keywords = args.keywords
 database = args.database
@@ -343,8 +376,13 @@ elif mode == 'derep' and optimum:
 elif mode == 'derep' and not optimum:
     derep_longest(input_file, database)
 
-    # Finishing !!!
+elif mode == "exchange_headers":
+    exchange_names(input_file, ex_file, output_file)
+
+# Finishing !!!
 
 time_of_calc = time.clock() - start_time
-print(time_of_calc, "seconds")  # in case if we want the time
-print('-------\nThanks for using SDDC\n-------\nfor contact ==> eslam.ebrahim@pharma.cu.edu.eg\n-------')
+print(time_of_calc, "seconds")
+print(
+    '-------\nThanks for using SDDC\n-------\nfor contact ==> eslam.ebrahim@pharma.cu.edu.eg\nPlease cite: '
+    '10.1007/s00284-017-1327-6\n-------')
