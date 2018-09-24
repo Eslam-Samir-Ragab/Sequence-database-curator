@@ -17,6 +17,11 @@ This program dereplicates and/or filter nucleotide and/or protein database from 
 
 ### **The full SDDC commands, Cheat sheet and notes are [here](https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/SDDC%20Cheat%20sheet.pdf)**
 
+## *Updates in SDDC v3.0:*
+1. Bugs fixes.
+2. Usage of -org_order with -kw is updated
+3. Exchange FASTA headers mode is now available.
+
 ## *Updates in SDDC v2.0:*
 1. You can filter the sequences using only keywords (separated by a comma) inclusively or exclusively by adding (-kw) argument to your normal command line.
 2. You can get your sequences in their original order after dereplication and/or sequence filtration by adding (-org_order) to your normal command line.
@@ -67,6 +72,14 @@ if you want to filter a protein sequences exclusively by keyword(s) in their nam
 if you want to filter a nucleotide sequences by sequence (only exclusive) use the following command
 
 `python sddc.py -in (input_file) -n -out (output_file) -mode filter -flt_by seq -flt_file (filter_file)`
+
+if you want to exchange words in FASTA headers of your protein sequences use the following command
+
+`python sddc.py -in (input_file) -p -out (output_file) -mode exchange_headers -ex_file (exchange_file in csv)`
+
+if you want to exchange words in FASTA headers of your nucleotide sequences use the following command
+
+`python sddc.py -in (input_file) -n -out (output_file) -mode exchange_headers -ex_file (exchange_file in csv)`
 
 Example (1)
 
