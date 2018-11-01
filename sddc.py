@@ -3,6 +3,7 @@ from __future__ import print_function
 import sys
 import argparse
 import time
+import re
 from Bio import SeqIO
 from Bio.Seq import reverse_complement
 
@@ -260,9 +261,9 @@ def exchange_names(start_file, exchange_file, out_file):
     print('\n-------\nexchanged headers = %d from %d total headers\n' % (len(ex_dict), len(starting_names)))
 
 
-parser = argparse.ArgumentParser(prog='Sequence Database Dereplicator and Curator (SDDC) program',
+parser = argparse.ArgumentParser(prog='\n\nSequence Database Dereplicator and Curator (SDDC) program',
                                  usage='\n%(prog)s : dereplicates and/or filter nucleotide and/or protein database '
-                                       'from a list of names or sequences (by exact match).\n\n Eslam S.Ibrahim\n\n '
+                                       'from a list of names or sequences (by exact match).\n\nEslam S. Ibrahim\n\n'
                                        'eslam.ebrahim@pharma.cu.edu.eg')
 parser.add_argument('-mode', dest='mode', required=True, choices=['derep', 'filter', 'exchange_headers'],
                     help='dereplicate your file/files, filter your file from specific sequences or names, or exchange '
@@ -334,6 +335,14 @@ if optimum and prot_length < 1:
     sys.exit("\n\nPlease enter your portein length by the flag (-prot_length) !\n")
 
     # Processing !!!
+
+proclamation = '\n\nSequence Database Dereplicator and Curator (SDDC) program: dereplicates and/or filter nucleotide ' \
+               'and/or protein database from a list of names or sequences (by exact match).\n\nEslam S. ' \
+               'Ibrahim\n\nThis software is under GNU General Public License v3.0\n\nYou can find the updated ' \
+               'releases here:\ngithub.com/Eslam-Samir-Ragab/Sequence-database-curator/releases '
+
+for x in proclamation.splitlines():
+    print('\n'.join(line.strip() for line in re.findall(r'.{1,65}(?:\s+|$)', x)))
 
 if mode == 'filter' and filter_approach == 'name' and not keywords:
     remover_by_name(input_file, remove_file, filteration)
