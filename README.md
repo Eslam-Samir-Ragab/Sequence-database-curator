@@ -1,6 +1,8 @@
 # Sequence Dereplicator and Database Curator (SDDC) program
 This program dereplicates and/or filter nucleotide and/or protein database from a list of names or sequences (by exact match).
 
+## This software is under GNU General Public License v3.0
+
 ## Please, cite: DOI: [10.1007/s00284-017-1327-6](https://link.springer.com/article/10.1007/s00284-017-1327-6)
 <a href="https://sites.google.com/pharma.cu.edu.eg/eslam-ibrahim/github-and-softwares/sddc-program"><img src="https://github.com/Eslam-Samir-Ragab/Sequence-database-curator/blob/master/additionals/description.png"></a>
 
