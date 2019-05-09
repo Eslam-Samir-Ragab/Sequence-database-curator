@@ -78,7 +78,7 @@ def cleaner(_list):
 
 def kmer_gen(sequence, k, start):
     # to generate k-mers
-    kmer = sequence[start:start + k + 1]
+    kmer = sequence[start:(start + k + 1)]
     return kmer
 
 
@@ -196,7 +196,8 @@ def derep_longest(start_file, sequence_type):
                     if reverse_complement(comparing) in seq:
                         editing[i] = ''
                         break
-
+        else:
+            editing[i] = ''
     editing = cleaner(editing)
     if original_order:
         file_writer_original_order(output_file, starting_names, starting_sequences, editing)
@@ -283,7 +284,7 @@ parser.add_argument('-flt_by', dest='filter_approach', choices=['seq', 'name'], 
                     help='The approach by which you wan your input file to be filtered')
 parser.add_argument('-p', dest='database', action='store_const', const='p', help='protein sequences')
 parser.add_argument('-n', dest='database', action='store_const', const='n', help='nucleotide sequences')
-parser.add_argument('-len', dest='length', default=6, type=int, help='length of k-mer (for seq filter mode only)')
+parser.add_argument('-len', dest='length', default=28, type=int, help='length of k-mer (for seq filter mode only)')
 parser.add_argument('-min_length', dest='minimum', default=1, type=int,
                     help='minimum sequence length in your data (for dereplication only)')
 parser.add_argument('-multi', dest='multiples', default=False, action='store_true',
@@ -317,7 +318,7 @@ original_order = args.original_order
 prot_length = args.prot_length
 
 # Checkers !!!
-start_time = time.clock()
+start_time = time.perf_counter()
 
 if database != 'p' and database != 'n':
     sys.exit("\n\nPlease specify your type of database !\n")
@@ -390,7 +391,7 @@ elif mode == "exchange_headers":
 
 # Finishing !!!
 
-time_of_calc = time.clock() - start_time
+time_of_calc = time.perf_counter() - start_time
 print(time_of_calc, "seconds")
 print(
     '-------\nThanks for using SDDC\n-------\nfor contact ==> eslam.ebrahim@pharma.cu.edu.eg\nPlease cite: '
